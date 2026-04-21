@@ -48,7 +48,7 @@ Mean-centering ensures:
 - `b_gi` = differential SNP effect between groups
 - `p_gi` = ieQTL significance (unchanged by centering)
 
-**Script:** `step2_build_interaction.R`  
+**Script:** `Prepare_interactionfile.R`  
 **Output:** `interaction_430_centered.txt`, `interaction_430_lookup.csv`
 
 ### Step 3-Build Expression BED for TensorQTL
@@ -60,7 +60,7 @@ Converts the INT-transformed expression matrix (from the eQTL pipeline) into Ten
 - Sorts by chromosome and position
 - Compresses with bgzip and indexes with tabix
 
-**Script:** `step3_build_expression_bed.R`  
+**Script:** `prepare_bed_file.R`  
 **Output:** `expression_430_tensorqtl.bed.gz` + `.tbi`
 
 ### Step 4-Run ieQTL Mapping
