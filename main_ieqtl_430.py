@@ -18,7 +18,7 @@ print(f"pandas: {pd.__version__}")
 print(f"tensorqtl: {tensorqtl.__version__}")
 
 # --- Define paths (EDIT THESE) ---
-WORK_DIR          = "/path/to/ieQTL/LATEST_IEQTL_RUN_March2026"
+WORK_DIR          = "/path/to/ieQTL"
 PGEN_PREFIX       = os.path.join(WORK_DIR, "TCD_UU_430_ieqtl")
 EXPRESSION_BED    = os.path.join(WORK_DIR, "expression_430_tensorqtl.bed.gz")
 COVARIATES_FILE   = "Covariates_TCD_UU_Peer60_latest.tsv"
