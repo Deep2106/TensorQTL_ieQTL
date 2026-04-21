@@ -9,7 +9,7 @@
 # Load your conda environment with tensorqtl
 # source activate <TENSORQTL_ENV>
 
-cd /path/to/LATEST_IEQTL_RUN_March2026
+cd /path/to/ieqtl
 
 python main_ieqtl_430.py
 
