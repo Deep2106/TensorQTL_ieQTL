@@ -169,4 +169,3 @@ Severity is the study variable of interest. Including it as a covariate would re
 Deepak Bharti
 deepak.bharti03@gmail.com
 
-[Your contact information]
