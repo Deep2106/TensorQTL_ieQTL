@@ -163,10 +163,10 @@ Severity is the study variable of interest. Including it as a covariate would re
 - Taylor-Weiner A, Aguet F, et al. Scaling computational genomics to millions of individuals with GPUs. *Genome Biology* 20, 228 (2019).
 - Ongen H, Buil A, Brown AA, Dermitzakis ET, Delaneau O. Fast and efficient QTL mapper for thousands of molecular phenotypes. *Bioinformatics* 32, 1479–1485 (2016).
 
-## License
-
-[Specify your license here]
 
 ## Contact
+
+Deepak Bharti
+deepak.bharti03@gmail.com
 
 [Your contact information]
