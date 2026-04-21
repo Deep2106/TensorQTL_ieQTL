@@ -2,7 +2,7 @@
 
 ## Overview
 
-This pipeline identifies **interaction eQTLs (ieQTLs)** — genetic variants whose effect on gene expression is modulated by COVID-19 disease severity. It tests the model:
+This pipeline identifies **interaction eQTLs (ieQTLs)**-genetic variants whose effect on gene expression is modulated by COVID-19 disease severity. It tests the model:
 
 ```
 Expression ~ β₁·Genotype + β₂·Severity + β₃·(Genotype × Severity) + Covariates + ε
@@ -26,7 +26,7 @@ The interaction term (β₃) captures severity-dependent genetic regulation, rev
 
 ## Pipeline Steps
 
-### Step 1 — Genotypes to 430 Samples
+### Step 1-Genotypes to 430 Samples
 
 Subsets the original samples PLINK2 pgen to 430 QC-passing samples using a keep list derived from the covariate file.
 
@@ -39,7 +39,7 @@ plink2 --pfile <PGEN_PREFIX> \
 
 **Script:** `step1_subset_pgen.sh`
 
-### Step 2 — Build Mean-Centered Interaction File
+### Step 2-Build Mean-Centered Interaction File
 
 interaction file (severity: 0=non-severe, 1=severe) to 430 samples and applies mean-centering.
 
@@ -51,7 +51,7 @@ Mean-centering ensures:
 **Script:** `step2_build_interaction.R`  
 **Output:** `interaction_430_centered.txt`, `interaction_430_lookup.csv`
 
-### Step 3 — Build Expression BED for TensorQTL
+### Step 3-Build Expression BED for TensorQTL
 
 Converts the INT-transformed expression matrix (from the eQTL pipeline) into TensorQTL BED format:
 - Merges with Gencode v25 gene coordinates (TSS-based)
@@ -63,7 +63,7 @@ Converts the INT-transformed expression matrix (from the eQTL pipeline) into Ten
 **Script:** `step3_build_expression_bed.R`  
 **Output:** `expression_430_tensorqtl.bed.gz` + `.tbi`
 
-### Step 4 — Run ieQTL Mapping
+### Step 4-Run ieQTL Mapping
 
 Runs TensorQTL `cis.map_nominal` with the interaction term. Includes a 4-way sample alignment validation (genotype × expression × covariates × interaction) before execution.
 
@@ -102,8 +102,8 @@ Runs TensorQTL `cis.map_nominal` with the interaction term. Includes a 4-way sam
 |--------|-------------|
 | `b_g` | Average SNP effect on expression (due to mean-centering) |
 | `b_i` | Severity main effect on expression |
-| `b_gi` | **Interaction effect** — change in SNP effect between severity groups |
-| `pval_gi` | **ieQTL p-value** — significance of the interaction term |
+| `b_gi` | **Interaction effect**-change in SNP effect between severity groups |
+| `pval_gi` | **ieQTL p-value**-significance of the interaction term |
 | `pval_adj_bh` | BH-adjusted p-value (if available) |
 
 ## Expression Data Processing (Upstream)
@@ -125,7 +125,7 @@ The expression BED used here is the end product of the eQTL preprocessing pipeli
 The original clinical classification included mild, moderate, and severe groups (~138 / ~176 / ~119). We merged mild + moderate into non-severe because:
 
 - **Power:** N=430 is in the lower range for ieQTL detection; splitting further reduces power in each stratum
-- **Linearity assumption:** TensorQTL treats the interaction term as continuous — a 0/1/2 coding assumes linear dose-response, which may not hold
+- **Linearity assumption:** TensorQTL treats the interaction term as continuous-a 0/1/2 coding assumes linear dose-response, which may not hold
 - **Comparability:** Wang et al. (2022) used binary severity with a comparable sample size (n=465; 359 severe, 106 non-severe)
 - **Validation strategy:** 3-group gradient analysis on top hits serves as supplementary validation
 
@@ -144,8 +144,8 @@ Severity is the study variable of interest. Including it as a covariate would re
 | [TensorQTL](https://github.com/broadinstitute/tensorqtl) | ≥1.0.7 | ieQTL mapping (GPU-accelerated) |
 | [PLINK2](https://www.cog-genomics.org/plink/2.0/) | ≥2.0 | Genotype subsetting |
 | [htslib](http://www.htslib.org/) | ≥1.9 | bgzip + tabix |
-| R ≥ 4.0 | — | Data preparation |
-| Python ≥ 3.8 | — | TensorQTL execution |
+| R ≥ 4.0 |-| Data preparation |
+| Python ≥ 3.8 |-| TensorQTL execution |
 | PyTorch | ≥1.7 | GPU/CPU tensor operations |
 | CUDA (optional) | ≥11.0 | GPU acceleration |
 
